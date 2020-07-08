@@ -11,4 +11,22 @@ library(conflicted)
 conflict_prefer("select","dplyr")
 ```
 
+```{r}
+se.df<-read.csv("C:/Users/lenovo/Documents/github/Rcourse2020/data/se.csv")
+p1<-ggplot(se.df)+
+  geom_point(aes(x=year,y=visitors,color=park_name))
+p1
+```
+```{r}
+p2<-ggplot(se.df)+
+  geom_point(aes(x=year,y=visitors,color=state))
+p2
+```
+```{r}
+p3<-ggplot(se.df)+
+  geom_point(aes(x=year,y=visitors,color=park_name))+
+  labs(x = "Year",y = "Visitation",title = "California National Park Visitation") +
+  theme(axis.text.x = element_text(angle=45))
+p3
+```
 
