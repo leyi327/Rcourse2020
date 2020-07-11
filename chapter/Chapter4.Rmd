@@ -85,7 +85,7 @@ Clear your workspace (Session > Restart R)
 ---
 #### load `tidyverse` (which has `dplyr` inside)
 In your R Markdown file, let’s make sure we’ve got our libraries loaded. Write the following:
-```{r, eval = F}
+```{r}
 library(tidyverse)     ## install.packages("tidyverse")
 ```
 This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn’t exist, you can install the package easily by running the code within the comment (highlight `install.packages("tidyverse")` and run it).
@@ -97,7 +97,7 @@ This is becoming standard practice for how to load a library in a file, and if y
 In our R Markdown, let’s read this csv file and name the variable “gapminder”. We will use the `read_csv()` function from the `readr` package (part of the tidyverse, so it’s already installed!).
 ```{r, message = F, echo = F}
 ## read gapminder csv. Note the readr:: prefix identifies which package it's in
-gapminder <- readr::read_csv('data/gapminder.csv') 
+gapminder <- readr::read_csv('../data/gapminder.csv') 
 ```
 Let’s inspect:
 ```{r, eval = F}
@@ -558,8 +558,8 @@ knitr::include_graphics('figures/rstudio-cheatsheet-reshaping-data-gather.png')
 Read in the data. Let’s also read in the gapminder data from yesterday so that we can use it to compare later on.
 ```{r, message = F}
 ## wide format
-gap_wide <- readr::read_csv('data/gapminder_wide.csv')
-gapminder <- readr::read_csv('data/gapminder.csv')
+gap_wide <- readr::read_csv('../data/gapminder_wide.csv')
+gapminder <- readr::read_csv('../data/gapminder.csv')
 ```
 Let’s have a look:
 

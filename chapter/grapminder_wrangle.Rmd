@@ -1,0 +1,50 @@
+---
+title: "grapminder-wrangle"
+output: pdf_document
+---
+
+```{r setup, message=FALSE, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Learn 'dplyr' using gapminder wrangle.
+
+```{r}
+gapminder<-read_csv('../data/gapminder.csv')
+```
+
+```{r}
+filter(gapminder,lifeExp<29)
+filter(gapminder,country=="China")
+```
+```{r}
+brazil<-filter(gapminder,country=="Brazil", year<=2007, year>=1987)
+mean(brazil$lifeExp)
+```
+
+```{r}
+gapminder %>% filter(continent=='Asia',year==2007) %>% mutate(pop1000 = pop/1000)
+```
+
+```{r}
+gapminder %>%
+group_by(continent) %>%
+summarize(cont_pop = sum(pop)) %>%
+ungroup()
+```
+```{r}
+gapminder %>%
+group_by(continent) %>%
+summarize(GDP = sum(gdpPercap*pop)) %>% 
+arrange(desc(GDP)) %>% 
+ungroup()
+```
+
+```{r}
+gapdesc<-gapminder %>% arrange(desc(country))
+gapdesc %>% filter(continent=='Asia') %>% group_by(year) %>% summarize(maxlife=max(lifeExp)) %>% arrange(desc(year)) %>% ungroup()
+```
+
+
+
